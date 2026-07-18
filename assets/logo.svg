@@ -1,0 +1,6 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 96 96">
+  <circle cx="48" cy="48" r="46" fill="#2E4F35"></circle>
+  <circle cx="48" cy="48" r="46" fill="none" stroke="#C9982D" stroke-width="3"></circle>
+  <circle cx="48" cy="48" r="38" fill="none" stroke="#C9982D" stroke-width="1.2"></circle>
+  <text x="48" y="50" text-anchor="middle" dominant-baseline="central" font-family="&#39;Songti SC&#39;,&#39;SimSun&#39;,&#39;Noto Serif SC&#39;,serif" font-size="46" fill="#E8C168" font-weight="700">舞</text>
+</svg>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+  <link href="https://fonts.googleapis.com/css2?family=Asap+Condensed:wght@600;700&family=Asap:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: "Asap", sans-serif; color: #2B3730; background: #FAF5EA; }
+    h1, h2, h3, h4 { font-family: "Asap Condensed", sans-serif; margin: 0; }
+    ::selection { background: #E7EEE7; }
+    :root {
+      --pine: #2E4F35; --pine-dark: #1F3A26; --gold: #C9982D; --gold-soft: #F7EED9; --red: #2F6D5A;
+      --pine-soft: #E7EEE7; --ink: #2B3730; --muted: #63695F; --border: #E8DFC8; --page: #FAF5EA; --sunken: #F4EDDD;
+    }
+    a { color: var(--pine); }
+    a:hover { color: var(--pine-dark); }
+  </style>
+</helmet>
+
+<div style="background:var(--page);min-height:100vh;display:flex;flex-direction:column" data-screen-label="Team">
+  <dc-import name="SiteNav" active-page="team" hint-size="100%,72px"></dc-import>
+
+  <section style="padding:64px 24px;flex:1">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="max-width:70ch;margin:0 auto 40px;text-align:center">
+        <img src="assets/pptx/image13.png" alt="" style="width:76px;display:block;margin:0 auto 12px;opacity:0.9">
+        <span style="text-transform:uppercase;letter-spacing:0.06em;font-size:13px;font-weight:700;color:var(--red)">Meet the Group</span>
+        <h2 style="font-size:36px;margin:12px 0 16px">Instructors &amp; Dancers</h2>
+        <p style="font-size:18px;color:var(--ink);line-height:1.6;margin:0">Our teaching team blends formal Chinese dance training with years of teaching kids and adults alike in the Fox Valley.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px" class="fv-team-grid">
+        <sc-for list="{{ teamMembers }}" as="member" hint-placeholder-count="3">
+          <div style="text-align:center">
+            <div style="width:140px;height:140px;border-radius:50%;overflow:hidden;margin:0 auto 16px;box-shadow:0 1px 2px rgba(0,0,0,0.08)">
+              <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ member.id }}" shape="circle" placeholder="Photo" hint-size="140px,140px"></x-import>
+            </div>
+            <h4 style="font-family:'Asap Condensed',sans-serif;font-size:20px;font-weight:700;color:var(--pine);margin:0 0 4px">{{ member.name }}</h4>
+            <div style="font-size:13px;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px">{{ member.role }}</div>
+            <div style="font-size:14px;color:var(--muted);line-height:1.5">{{ member.bio }}</div>
+          </div>
+        </sc-for>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,120px"></dc-import>
+
+  <style>
+    @media (max-width: 860px) {
+      .fv-team-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    return {
+      teamMembers: [
+        { id: "team-1", name: "Mei Chen", role: "Founder & Head Instructor", bio: "Founded the group in 2006 and has led its classical and folk repertoire ever since." },
+        { id: "team-2", name: "Julia Tang", role: "Youth Program Lead", bio: "Teaches our children's classes and choreographs our annual showcase pieces." },
+        { id: "team-3", name: "Wen Zhao", role: "Ensemble Director", bio: "Coordinates adult ensemble rehearsals and community performance bookings." },
+      ],
+    };
+  }
+}
+
+</script>
+</body>
+</html>

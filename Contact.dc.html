@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+  <link href="https://fonts.googleapis.com/css2?family=Asap+Condensed:wght@600;700&family=Asap:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: "Asap", sans-serif; color: #2B3730; background: #FAF5EA; }
+    h1, h2, h3, h4 { font-family: "Asap Condensed", sans-serif; margin: 0; }
+    ::selection { background: #E7EEE7; }
+    :root {
+      --pine: #2E4F35; --pine-dark: #1F3A26; --gold: #C9982D; --gold-soft: #F7EED9; --red: #2F6D5A;
+      --pine-soft: #E7EEE7; --ink: #2B3730; --muted: #63695F; --border: #E8DFC8; --page: #FAF5EA; --sunken: #F4EDDD;
+    }
+    a { color: var(--pine); }
+    a:hover { color: var(--pine-dark); }
+  </style>
+</helmet>
+
+<div style="background:var(--page)" data-screen-label="Contact">
+  <dc-import name="SiteNav" active-page="contact" hint-size="100%,72px"></dc-import>
+
+  <section style="padding:64px 24px;background:var(--page)">
+    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px" class="fv-contact-grid">
+      <div>
+        <img src="assets/pptx/image13.png" alt="" style="width:64px;display:block;margin:0 0 12px;opacity:0.9">
+        <span style="text-transform:uppercase;letter-spacing:0.06em;font-size:13px;font-weight:700;color:var(--red)">Get In Touch</span>
+        <h2 style="font-size:36px;margin:12px 0 20px">Book Us for Your Event</h2>
+        <p style="font-size:18px;color:var(--ink);line-height:1.6;margin:0 0 32px">We love performing at community festivals, school programs, cultural celebrations and private events across Fox Valley and beyond. We also welcome sponsorship inquiries from local businesses who want to support Chinese cultural arts in our community.</p>
+        <div style="display:flex;flex-direction:column;gap:16px">
+          <div style="display:flex;gap:12px;align-items:center">
+            <span style="width:36px;height:36px;border-radius:50%;background:var(--pine-soft);color:var(--pine);display:flex;align-items:center;justify-content:center;font-size:16px">✉</span>
+            <a href="mailto:hello@foxvalleychinesedance.org" style="color:var(--ink);text-decoration:none;font-size:16px">hello@foxvalleychinesedance.org</a>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center">
+            <span style="width:36px;height:36px;border-radius:50%;background:var(--pine-soft);color:var(--pine);display:flex;align-items:center;justify-content:center;font-size:16px">☎</span>
+            <a href="tel:19205551234" style="color:var(--ink);text-decoration:none;font-size:16px">(920) 555-1234</a>
+          </div>
+          <div style="display:flex;gap:12px;align-items:center">
+            <span style="width:36px;height:36px;border-radius:50%;background:var(--pine-soft);color:var(--pine);display:flex;align-items:center;justify-content:center;font-size:16px">📍</span>
+            <span style="color:var(--ink);font-size:16px">Fox Valley, Wisconsin</span>
+          </div>
+        </div>
+      </div>
+
+      <div style="background:var(--sunken);border:1px solid var(--border);border-radius:8px;padding:32px">
+        <sc-if value="{{ formSubmitted }}" hint-placeholder-val="{{ false }}">
+          <div style="display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:32px 0">
+            <span style="width:48px;height:48px;border-radius:50%;background:var(--pine);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px">✓</span>
+            <h3 style="font-size:28px;margin:0">Thank you!</h3>
+            <p style="color:var(--ink);font-size:16px;margin:0">We've received your message and will be in touch soon.</p>
+            <div>
+              <span onClick="{{ resetForm }}" style="cursor:pointer;color:var(--pine);font-size:15px;text-decoration:underline">Send another message</span>
+            </div>
+          </div>
+        </sc-if>
+        <sc-if value="{{ formNotSubmitted }}" hint-placeholder-val="{{ true }}">
+          <form onSubmit="{{ handleSubmit }}" style="display:flex;flex-direction:column;gap:16px">
+            <div>
+              <label style="display:block;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px">Name</label>
+              <input type="text" required="{{ true }}" style="width:100%;padding:10px 12px;border:1px solid #C7CBC8;border-radius:5px;font-family:'Asap',sans-serif;font-size:16px" placeholder="Your name"></input>
+            </div>
+            <div>
+              <label style="display:block;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px">Email</label>
+              <input type="email" required="{{ true }}" style="width:100%;padding:10px 12px;border:1px solid #C7CBC8;border-radius:5px;font-family:'Asap',sans-serif;font-size:16px" placeholder="you@example.com"></input>
+            </div>
+            <div>
+              <label style="display:block;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px">Inquiry Type</label>
+              <select style="width:100%;padding:10px 12px;border:1px solid #C7CBC8;border-radius:5px;font-family:'Asap',sans-serif;font-size:16px;background:#fff">
+                <option value="booking">Event Booking</option>
+                <option value="sponsorship">Sponsorship Inquiry</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+            <div>
+              <label style="display:block;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px">Message</label>
+              <textarea rows="4" required="{{ true }}" style="width:100%;padding:10px 12px;border:1px solid #C7CBC8;border-radius:5px;font-family:'Asap',sans-serif;font-size:16px;resize:vertical" placeholder="Tell us about your event or sponsorship idea"></textarea>
+            </div>
+            <button type="submit" style="align-self:flex-start;padding:13px 24px;border-radius:5px;background:var(--pine);color:#fff;font-weight:700;font-size:16px;border:none;cursor:pointer">Send Message</button>
+          </form>
+        </sc-if>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,120px"></dc-import>
+
+  <style>
+    @media (max-width: 860px) {
+      .fv-contact-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  state = { formSubmitted: false };
+  handleSubmit = (e) => { e.preventDefault(); this.setState({ formSubmitted: true }); };
+  resetForm = () => this.setState({ formSubmitted: false });
+  renderVals() {
+    return {
+      formSubmitted: this.state.formSubmitted,
+      formNotSubmitted: !this.state.formSubmitted,
+      handleSubmit: this.handleSubmit,
+      resetForm: this.resetForm,
+    };
+  }
+}
+
+</script>
+</body>
+</html>

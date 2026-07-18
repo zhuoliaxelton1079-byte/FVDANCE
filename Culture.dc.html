@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="true">
+  <link href="https://fonts.googleapis.com/css2?family=Asap+Condensed:wght@600;700&family=Asap:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    html { scroll-behavior: smooth; }
+    body { margin: 0; font-family: "Asap", sans-serif; color: #2B3730; background: #FAF5EA; }
+    h1, h2, h3, h4 { font-family: "Asap Condensed", sans-serif; margin: 0; }
+    ::selection { background: #E7EEE7; }
+    :root {
+      --pine: #2E4F35; --pine-dark: #1F3A26; --gold: #C9982D; --gold-soft: #F7EED9; --red: #2F6D5A;
+      --pine-soft: #E7EEE7; --ink: #2B3730; --muted: #63695F; --border: #E8DFC8; --page: #FAF5EA; --sunken: #F4EDDD;
+    }
+    a { color: var(--pine); }
+    a:hover { color: var(--pine-dark); }
+  </style>
+</helmet>
+
+<div style="background:var(--page);min-height:100vh;display:flex;flex-direction:column" data-screen-label="Culture">
+  <dc-import name="SiteNav" active-page="culture" hint-size="100%,72px"></dc-import>
+
+  <section style="padding:64px 24px;flex:1">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="max-width:70ch;margin:0 auto 40px;text-align:center">
+        <img src="assets/pptx/image13.png" alt="" style="width:76px;display:block;margin:0 auto 12px;opacity:0.9">
+        <span style="text-transform:uppercase;letter-spacing:0.06em;font-size:13px;font-weight:700;color:var(--red)">Our Repertoire</span>
+        <h2 style="font-size:36px;margin:12px 0 16px">Promoting Chinese Culture Through Dance</h2>
+        <p style="font-size:18px;color:var(--ink);line-height:1.6;margin:0">Every performance is a small window into China's regions, seasons and stories — brought to life through movement, costume and music.</p>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:40px" class="fv-repertoire-grid">
+        <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:24px;box-shadow:0 1px 2px rgba(0,0,0,0.06)">
+          <div style="text-transform:uppercase;letter-spacing:0.06em;font-size:11px;font-weight:700;color:var(--red);margin-bottom:8px">Style</div>
+          <h4 style="font-family:'Asap',sans-serif;font-size:17px;font-weight:700;color:var(--pine);margin:0 0 8px">Classical Dance</h4>
+          <div style="font-size:14px;color:var(--ink);line-height:1.5">Graceful, flowing forms rooted in centuries of Chinese classical technique — ribbon, fan and silk movements.</div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:24px;box-shadow:0 1px 2px rgba(0,0,0,0.06)">
+          <div style="text-transform:uppercase;letter-spacing:0.06em;font-size:11px;font-weight:700;color:var(--red);margin-bottom:8px">Style</div>
+          <h4 style="font-family:'Asap',sans-serif;font-size:17px;font-weight:700;color:var(--pine);margin:0 0 8px">Ethnic Dance</h4>
+          <div style="font-size:14px;color:var(--ink);line-height:1.5">Vibrant folk traditions from across China's regions and ethnic minority groups, each with its own rhythm and story.</div>
+        </div>
+        <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:24px;box-shadow:0 1px 2px rgba(0,0,0,0.06)">
+          <div style="text-transform:uppercase;letter-spacing:0.06em;font-size:11px;font-weight:700;color:var(--red);margin-bottom:8px">Format</div>
+          <h4 style="font-family:'Asap',sans-serif;font-size:17px;font-weight:700;color:var(--pine);margin:0 0 8px">Group &amp; Solo</h4>
+          <div style="font-size:14px;color:var(--ink);line-height:1.5">Large ensemble showcases alongside featured solo pieces that highlight individual dancers' artistry.</div>
+        </div>
+      </div>
+      <div style="background:var(--pine-soft);border-left:4px solid var(--gold);border-radius:0 6px 6px 0;padding:20px 24px">
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--pine);margin-bottom:4px">Why It Matters</div>
+        <div style="font-size:15px;color:var(--ink);line-height:1.6">Dance carries language, history and values across generations. By performing publicly in the Fox Valley, we help keep Chinese cultural traditions visible, accessible and alive for our neighbors of every background.</div>
+      </div>
+    </div>
+  </section>
+
+  <dc-import name="SiteFooter" hint-size="100%,120px"></dc-import>
+
+  <style>
+    @media (max-width: 860px) {
+      .fv-repertoire-grid { grid-template-columns: 1fr !important; }
+    }
+  </style>
+</div>
+
+</x-dc>
+</body>
+</html>
