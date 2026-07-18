@@ -820,13 +820,28 @@
     }
 
     // Public: host's "Import from computer" calls this to run local browse.
-    openFilePicker() { this._exitReframe(true); this._input.click(); }
+    openFilePicker() {
+      if (!(window.omelette && window.omelette.writeFile)) return;
+      this._exitReframe(true);
+      this._input.click();
+    }
 
     attributeChangedCallback() { if (this.shadowRoot) this._render(); }
 
     // handleEvent — one listener object for all four drag events keeps the
     // add/remove symmetric and the depth counter correct.
     handleEvent(e) {
+      const editable = !!(window.omelette && window.omelette.writeFile);
+      if (!editable) {
+        if (e.type === 'dragenter' || e.type === 'dragover' || e.type === 'dragleave' || e.type === 'drop') {
+          // Public views are read-only: absorb drag/drop so nothing uploads.
+          e.preventDefault();
+          e.stopPropagation();
+          this._depth = 0;
+          this.removeAttribute('data-over');
+        }
+        return;
+      }
       if (e.type === 'dragenter' || e.type === 'dragover') {
         // Without preventDefault the browser never fires 'drop'.
         e.preventDefault();
