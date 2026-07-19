@@ -6,7 +6,7 @@ window.SITE_NAV_COPY = {
     about: "About",
     team: "Team",
     performances: "Performances",
-    culture: "Repertoire",
+    culture: "Heritage",
     testimonials: "Testimonials",
     contact: "Contact"
   }
