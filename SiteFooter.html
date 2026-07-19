@@ -3,17 +3,30 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./site-footer-copy.js"></script>
 <script src="./support.js"></script>
 </head>
 <body>
 <x-dc>
 <footer style="background:linear-gradient(135deg,#3A543A,#256158);color:rgba(255,255,255,0.75);padding:40px 24px;font-family:'Asap',sans-serif">
   <div style="max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:16px">
-    <div style="font-family:'Asap Condensed',sans-serif;color:#fff;font-size:18px">Fox Valley Chinese Dance Group</div>
-    <div style="font-size:15px">© 2026 Fox Valley Chinese Dance Group · Fox Valley, Wisconsin</div>
+    <div style="font-family:'Asap Condensed',sans-serif;color:#fff;font-size:18px">{{ copy.brand }}</div>
+    <div style="font-size:15px">{{ copy.copyright }}</div>
   </div>
 </footer>
 
 </x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const fallback = {
+      brand: "Fox Valley Chinese Dance Group",
+      copyright: "Copyright 2026 Fox Valley Chinese Dance Group | Fox Valley, Wisconsin"
+    };
+    return { copy: window.SITE_FOOTER_COPY || fallback };
+  }
+}
+
+</script>
 </body>
 </html>

@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./home-copy.js"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -33,12 +34,12 @@
     <img src="assets/pptx/image3.png" alt="" style="position:absolute;bottom:16px;left:-50px;width:400px;opacity:0.3;pointer-events:none">
     <div style="max-width:1200px;margin:0 auto;padding:64px 24px 56px;display:grid;grid-template-columns:1.1fr 0.9fr;gap:64px;align-items:center;position:relative" class="fv-hero-grid">
       <div>
-        <span style="display:inline-flex;align-items:center;padding:4px 12px;border-radius:999px;background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:20px">Est. 2006 · Fox Valley, Wisconsin</span>
-        <h1 style="color:var(--pine-dark);font-size:64px;line-height:1.1;margin:0 0 16px">Fox Valley Chinese Dance Group</h1>
+        <span style="display:inline-flex;align-items:center;padding:4px 12px;border-radius:999px;background:var(--red);color:#fff;font-size:13px;font-weight:700;letter-spacing:0.04em;text-transform:uppercase;margin-bottom:20px">{{ copy.badge }}</span>
+        <h1 style="color:var(--pine-dark);font-size:64px;line-height:1.1;margin:0 0 16px">{{ copy.heroTitle }}</h1>
         <div style="width:64px;height:4px;background:var(--gold);border-radius:2px;margin:0 0 20px"></div>
-        <p style="font-size:18px;color:var(--ink);line-height:1.6;max-width:52ch;margin:0 0 32px">Sharing the beauty, discipline and joy of Chinese dance with our Wisconsin community — through classical and ethnic performances, festivals, and public events since 2006.</p>
+        <p style="font-size:18px;color:var(--ink);line-height:1.6;max-width:52ch;margin:0 0 32px">{{ copy.heroBody }}</p>
         <div style="display:flex;gap:16px;flex-wrap:wrap">
-          <a href="Performances.html" style="text-decoration:none;display:inline-flex;align-items:center;padding:13px 24px;border-radius:5px;border:1px solid var(--pine);color:var(--pine);font-weight:700;font-size:16px">Watch Performances</a>
+          <a href="{{ copy.heroCtaHref }}" style="text-decoration:none;display:inline-flex;align-items:center;padding:13px 24px;border-radius:5px;border:1px solid var(--pine);color:var(--pine);font-weight:700;font-size:16px">{{ copy.heroCtaLabel }}</a>
         </div>
       </div>
       <div style="width:100%;height:360px;border-radius:8px;overflow:hidden;box-shadow:0 12px 32px rgba(0,0,0,0.25)">
@@ -51,25 +52,17 @@
     <div style="max-width:1200px;margin:0 auto">
       <div style="max-width:70ch;margin:0 auto 48px;text-align:center">
         <img src="assets/pptx/image13.png" alt="" style="width:76px;display:block;margin:0 auto 12px;opacity:0.9">
-        <span style="text-transform:uppercase;letter-spacing:0.06em;font-size:13px;font-weight:700;color:var(--red)">Explore</span>
-        <h2 style="font-size:36px;margin:12px 0 0">Get to Know Us</h2>
+        <span style="text-transform:uppercase;letter-spacing:0.06em;font-size:13px;font-weight:700;color:var(--red)">{{ copy.sectionEyebrow }}</span>
+        <h2 style="font-size:36px;margin:12px 0 0">{{ copy.sectionTitle }}</h2>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px" class="fv-teaser-grid">
-        <a href="About.html" style="text-decoration:none;display:block;background:#fff;border:1px solid var(--border);border-radius:8px;padding:28px;box-shadow:0 1px 2px rgba(0,0,0,0.06)">
-          <h4 style="font-size:22px;color:var(--pine);margin:0 0 10px">Our Story</h4>
-          <div style="font-size:15px;color:var(--ink);line-height:1.5;margin-bottom:12px">Founded in 2006, a volunteer-led troupe sharing Chinese dance across the Fox Valley.</div>
-          <span style="font-size:14px;font-weight:700;color:var(--red)">Meet the group →</span>
-        </a>
-        <a href="Performances.html" style="text-decoration:none;display:block;background:#fff;border:1px solid var(--border);border-radius:8px;padding:28px;box-shadow:0 1px 2px rgba(0,0,0,0.06)">
-          <h4 style="font-size:22px;color:var(--pine);margin:0 0 10px">Performances</h4>
-          <div style="font-size:15px;color:var(--ink);line-height:1.5;margin-bottom:12px">Photos and clips from the Fox Valley PAC, Oshkosh Grand Opera House, and community festivals.</div>
-          <span style="font-size:14px;font-weight:700;color:var(--red)">See the gallery →</span>
-        </a>
-        <a href="Contact.html" style="text-decoration:none;display:block;background:#fff;border:1px solid var(--border);border-radius:8px;padding:28px;box-shadow:0 1px 2px rgba(0,0,0,0.06)">
-          <h4 style="font-size:22px;color:var(--pine);margin:0 0 10px">Book Us</h4>
-          <div style="font-size:15px;color:var(--ink);line-height:1.5;margin-bottom:12px">Bring Chinese dance to your festival, school, or private event — sponsorships welcome too.</div>
-          <span style="font-size:14px;font-weight:700;color:var(--red)">Get in touch →</span>
-        </a>
+        <sc-for list="{{ copy.cards }}" as="card" hint-placeholder-count="3">
+          <a href="{{ card.href }}" style="text-decoration:none;display:block;background:#fff;border:1px solid var(--border);border-radius:8px;padding:28px;box-shadow:0 1px 2px rgba(0,0,0,0.06)">
+            <h4 style="font-size:22px;color:var(--pine);margin:0 0 10px">{{ card.title }}</h4>
+            <div style="font-size:15px;color:var(--ink);line-height:1.5;margin-bottom:12px">{{ card.body }}</div>
+            <span style="font-size:14px;font-weight:700;color:var(--red)">{{ card.cta }}</span>
+          </a>
+        </sc-for>
       </div>
     </div>
   </section>
@@ -84,6 +77,42 @@
 </div>
 
 </x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const fallback = {
+      badge: "Est. 2006 | Fox Valley, Wisconsin",
+      heroTitle: "Fox Valley Chinese Dance Group",
+      heroBody: "Sharing the beauty, discipline and joy of Chinese dance with our Wisconsin community through classical and ethnic performances, festivals, and public events since 2006.",
+      heroCtaLabel: "Watch Performances",
+      heroCtaHref: "Performances.html",
+      sectionEyebrow: "Explore",
+      sectionTitle: "Get to Know Us",
+      cards: [
+        {
+          href: "About.html",
+          title: "Our Story",
+          body: "Founded in 2006, a volunteer-led troupe sharing Chinese dance across the Fox Valley.",
+          cta: "Meet the group ->"
+        },
+        {
+          href: "Performances.html",
+          title: "Performances",
+          body: "Photos and clips from the Fox Valley PAC, Oshkosh Grand Opera House, and community festivals.",
+          cta: "See the gallery ->"
+        },
+        {
+          href: "Contact.html",
+          title: "Book Us",
+          body: "Bring Chinese dance to your festival, school, or private event. Sponsorships welcome too.",
+          cta: "Get in touch ->"
+        }
+      ]
+    };
+    return { copy: window.HOME_COPY || fallback };
+  }
+}
+</script>
 </body>
 </html>
 

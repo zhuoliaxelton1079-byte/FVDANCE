@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./team-copy.js"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -32,9 +33,9 @@
     <div style="max-width:1200px;margin:0 auto">
       <div style="max-width:70ch;margin:0 auto 40px;text-align:center">
         <img src="assets/pptx/image13.png" alt="" style="width:76px;display:block;margin:0 auto 12px;opacity:0.9">
-        <span style="text-transform:uppercase;letter-spacing:0.06em;font-size:13px;font-weight:700;color:var(--red)">Meet the Group</span>
-        <h2 style="font-size:36px;margin:12px 0 16px">Instructors &amp; Dancers</h2>
-        <p style="font-size:18px;color:var(--ink);line-height:1.6;margin:0">Our teaching team blends formal Chinese dance training with years of teaching kids and adults alike in the Fox Valley.</p>
+        <span style="text-transform:uppercase;letter-spacing:0.06em;font-size:13px;font-weight:700;color:var(--red)">{{ copy.eyebrow }}</span>
+        <h2 style="font-size:36px;margin:12px 0 16px">{{ copy.title }}</h2>
+        <p style="font-size:18px;color:var(--ink);line-height:1.6;margin:0">{{ copy.intro }}</p>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px" class="fv-team-grid">
         <sc-for list="{{ teamMembers }}" as="member" hint-placeholder-count="3">
@@ -64,12 +65,35 @@
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
   renderVals() {
-    return {
+    const fallback = {
+      eyebrow: "Meet the Group",
+      title: "Instructors and Dancers",
+      intro: "Our teaching team blends formal Chinese dance training with years of teaching kids and adults alike in the Fox Valley.",
       teamMembers: [
-        { id: "team-1", name: "Mei Chen", role: "Founder & Head Instructor", bio: "Founded the group in 2006 and has led its classical and folk repertoire ever since." },
-        { id: "team-2", name: "Julia Tang", role: "Youth Program Lead", bio: "Teaches our children's classes and choreographs our annual showcase pieces." },
-        { id: "team-3", name: "Wen Zhao", role: "Ensemble Director", bio: "Coordinates adult ensemble rehearsals and community performance bookings." },
-      ],
+        {
+          id: "team-1",
+          name: "Mei Chen",
+          role: "Founder and Head Instructor",
+          bio: "Founded the group in 2006 and has led its classical and folk repertoire ever since."
+        },
+        {
+          id: "team-2",
+          name: "Julia Tang",
+          role: "Youth Program Lead",
+          bio: "Teaches our children's classes and choreographs our annual showcase pieces."
+        },
+        {
+          id: "team-3",
+          name: "Wen Zhao",
+          role: "Ensemble Director",
+          bio: "Coordinates adult ensemble rehearsals and community performance bookings."
+        }
+      ]
+    };
+    const copy = window.TEAM_COPY || fallback;
+    return {
+      copy,
+      teamMembers: copy.teamMembers,
     };
   }
 }

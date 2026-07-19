@@ -3,6 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./culture-copy.js"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -32,30 +33,22 @@
     <div style="max-width:1200px;margin:0 auto">
       <div style="max-width:70ch;margin:0 auto 40px;text-align:center">
         <img src="assets/pptx/image13.png" alt="" style="width:76px;display:block;margin:0 auto 12px;opacity:0.9">
-        <span style="text-transform:uppercase;letter-spacing:0.06em;font-size:13px;font-weight:700;color:var(--red)">Our Repertoire</span>
-        <h2 style="font-size:36px;margin:12px 0 16px">Promoting Chinese Culture Through Dance</h2>
-        <p style="font-size:18px;color:var(--ink);line-height:1.6;margin:0">Every performance is a small window into China's regions, seasons and stories — brought to life through movement, costume and music.</p>
+        <span style="text-transform:uppercase;letter-spacing:0.06em;font-size:13px;font-weight:700;color:var(--red)">{{ copy.eyebrow }}</span>
+        <h2 style="font-size:36px;margin:12px 0 16px">{{ copy.title }}</h2>
+        <p style="font-size:18px;color:var(--ink);line-height:1.6;margin:0">{{ copy.intro }}</p>
       </div>
       <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-bottom:40px" class="fv-repertoire-grid">
-        <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:24px;box-shadow:0 1px 2px rgba(0,0,0,0.06)">
-          <div style="text-transform:uppercase;letter-spacing:0.06em;font-size:11px;font-weight:700;color:var(--red);margin-bottom:8px">Style</div>
-          <h4 style="font-family:'Asap',sans-serif;font-size:17px;font-weight:700;color:var(--pine);margin:0 0 8px">Classical Dance</h4>
-          <div style="font-size:14px;color:var(--ink);line-height:1.5">Graceful, flowing forms rooted in centuries of Chinese classical technique — ribbon, fan and silk movements.</div>
-        </div>
-        <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:24px;box-shadow:0 1px 2px rgba(0,0,0,0.06)">
-          <div style="text-transform:uppercase;letter-spacing:0.06em;font-size:11px;font-weight:700;color:var(--red);margin-bottom:8px">Style</div>
-          <h4 style="font-family:'Asap',sans-serif;font-size:17px;font-weight:700;color:var(--pine);margin:0 0 8px">Ethnic Dance</h4>
-          <div style="font-size:14px;color:var(--ink);line-height:1.5">Vibrant folk traditions from across China's regions and ethnic minority groups, each with its own rhythm and story.</div>
-        </div>
-        <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:24px;box-shadow:0 1px 2px rgba(0,0,0,0.06)">
-          <div style="text-transform:uppercase;letter-spacing:0.06em;font-size:11px;font-weight:700;color:var(--red);margin-bottom:8px">Format</div>
-          <h4 style="font-family:'Asap',sans-serif;font-size:17px;font-weight:700;color:var(--pine);margin:0 0 8px">Group &amp; Solo</h4>
-          <div style="font-size:14px;color:var(--ink);line-height:1.5">Large ensemble showcases alongside featured solo pieces that highlight individual dancers' artistry.</div>
-        </div>
+        <sc-for list="{{ copy.cards }}" as="item" hint-placeholder-count="3">
+          <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:24px;box-shadow:0 1px 2px rgba(0,0,0,0.06)">
+            <div style="text-transform:uppercase;letter-spacing:0.06em;font-size:11px;font-weight:700;color:var(--red);margin-bottom:8px">{{ item.tag }}</div>
+            <h4 style="font-family:'Asap',sans-serif;font-size:17px;font-weight:700;color:var(--pine);margin:0 0 8px">{{ item.title }}</h4>
+            <div style="font-size:14px;color:var(--ink);line-height:1.5">{{ item.body }}</div>
+          </div>
+        </sc-for>
       </div>
       <div style="background:var(--pine-soft);border-left:4px solid var(--gold);border-radius:0 6px 6px 0;padding:20px 24px">
-        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--pine);margin-bottom:4px">Why It Matters</div>
-        <div style="font-size:15px;color:var(--ink);line-height:1.6">Dance carries language, history and values across generations. By performing publicly in the Fox Valley, we help keep Chinese cultural traditions visible, accessible and alive for our neighbors of every background.</div>
+        <div style="font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.06em;color:var(--pine);margin-bottom:4px">{{ copy.whyTitle }}</div>
+        <div style="font-size:15px;color:var(--ink);line-height:1.6">{{ copy.whyBody }}</div>
       </div>
     </div>
   </section>
@@ -70,5 +63,37 @@
 </div>
 
 </x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  renderVals() {
+    const fallback = {
+      eyebrow: "Our Repertoire",
+      title: "Promoting Chinese Culture Through Dance",
+      intro: "Every performance is a small window into China's regions, seasons and stories, brought to life through movement, costume and music.",
+      cards: [
+        {
+          tag: "Style",
+          title: "Classical Dance",
+          body: "Graceful, flowing forms rooted in centuries of Chinese classical technique: ribbon, fan and silk movements."
+        },
+        {
+          tag: "Style",
+          title: "Ethnic Dance",
+          body: "Vibrant folk traditions from across China's regions and ethnic minority groups, each with its own rhythm and story."
+        },
+        {
+          tag: "Format",
+          title: "Group and Solo",
+          body: "Large ensemble showcases alongside featured solo pieces that highlight individual dancers' artistry."
+        }
+      ],
+      whyTitle: "Why It Matters",
+      whyBody: "Dance carries language, history and values across generations. By performing publicly in the Fox Valley, we help keep Chinese cultural traditions visible, accessible and alive for neighbors of every background."
+    };
+    return { copy: window.CULTURE_COPY || fallback };
+  }
+}
+
+</script>
 </body>
 </html>
