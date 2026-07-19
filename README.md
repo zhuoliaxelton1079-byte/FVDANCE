@@ -13,10 +13,10 @@ between the quotes, and save.
 | Copy file | Controls |
 |---|---|
 | `home-copy.js` | Home page (hero, teaser cards) |
-| `about-copy.js` | About page story, badges, mission cards |
+| `about-copy.js` | About page story, missions, events |
 | `team-copy.js` | Team page members |
 | `performances-copy.js` | Performances page intro + photo/video captions |
-| `culture-copy.js` | Culture page repertoire cards + "why it matters" |
+| `culture-copy.js` | Culture page repertoire cards, "why it matters", dance history |
 | `testimonials-copy.js` | Testimonials page quotes |
 | `contact-copy.js` | Contact page, incl. form labels + contact details |
 | `site-nav-copy.js` | Top navigation labels + brand name |

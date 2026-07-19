@@ -4,37 +4,37 @@
 // Edit the words between the quotes, save, then reload the page.
 //   • Keep the quotes. Need a quote mark inside your text? Type \"
 //   • Don't change the words to the LEFT of the colons.
-//   • Each dancer's "id" links their performance photo to its
-//     drag-and-drop slot — don't change ids once a photo is in.
-//     To add a dancer, copy an existing { ... }, block and give
-//     it a new id (e.g. "dancer-4").
+//   • To add a mission, event, or dance type, copy an existing
+//     { ... }, block and edit the words inside it.
 // ─────────────────────────────────────────────────────────────
 
 window.ABOUT_COPY = {
-  eyebrow: "Our Story",
-  title: "Two Decades of Dance in the Fox Valley",
-  intro1: "Founded in 2006, the Fox Valley Chinese Dance Group began as a small circle of neighbors who wanted to keep Chinese dance traditions alive for their families and share them with the wider community. Today we are a volunteer-led group of dancers of all ages, rehearsing weekly and performing throughout Northeast Wisconsin.",
+  eyebrow: "About Us",
+  title: "Fox Valley Chinese Dance Group",
+  intro1: "Founded at the beginning of 2006, the Fox Valley Chinese Dance Group (FVCDG) is a not for profit arts organization that strives to promote traditional Chinese performing arts while nurturing innovations for a broad audiences across the Northeast Wisconsin. FVCDG creates a focus for community pride and inspiration, bridges among local communities, and promotes knowledge, understanding, and appreciation of Chinese arts and culture.",
 
-  highlightsTitle: "Dancer Highlights",
-  highlightsIntro: "A few of the dancers who bring our performances to life.",
-  highlights: [
+  missionTitle: "Our Missions",
+  missions: [
     {
-      id: "dancer-1",
-      name: "Mei Chen",
-      role: "Group Dance Leader",
-      body: "Leads the group's classical and folk dance performances."
+      body: "To promote the rich cultural heritage of Chinese dance by providing a forum for training and by presenting works at professional standards to the public."
     },
     {
-      id: "dancer-2",
-      name: "",
-      role: "Solo Dancer",
-      body: "Performs solo pieces and assists in choreography."
+      body: "To present Chinese performing arts and culture in a newly emerging and changing American culture."
     },
     {
-      id: "dancer-3",
-      name: "Cindy Kong",
-      role: "Group Leader",
-      body: "Coordinates dance rehearsals and community performance bookings."
+      body: "To ensure the Chinese communities preserve their unique individual identity with their culture and tradition."
+    },
+    {
+      body: "To strengthen relationship between North Eastern Wisconsin Chinese Association (NEWCA) and Green Bay/Fox Cities/Oshkosh local communities."
     }
+  ],
+
+  whatTitle: "What We Do",
+  whatBody: "FVCDG strives to showcase traditional Chinese dance and music to audiences across the local communities. Our activities include performances, workshops, and lecture/demonstrations for any organizations and culture events. The followings are some examples what we have done and are going to present:",
+  events: [
+    { body: "Performed at NEWCA Chinese New Year Party on Jan. 28, 2006" },
+    { body: "To perform at UW-Oshkosh Asian Heritage Month in Oshkosh, April 3, 2006" },
+    { body: "To perform at Ethnic Festival in Washington Middle School in Green Bay, April 27, 2006" },
+    { body: "To perform at Wisconsin Chinese Culture Day in Madison, September 2006" }
   ]
 };

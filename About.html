@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./about-copy.js?v=20260718c"></script>
+<script src="./about-copy.js?v=20260719c"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -29,32 +29,39 @@
 <div style="background:var(--page)" data-screen-label="About">
   <dc-import name="SiteNav" active-page="about" hint-size="100%,72px"></dc-import>
 
-  <section style="padding:64px 24px 48px;background:var(--page)">
-    <div style="max-width:70ch;margin:0 auto;text-align:center">
+  <section style="padding:72px 24px 56px;background:var(--page)">
+    <div style="max-width:72ch;margin:0 auto;text-align:center">
       <img src="assets/pptx/image13.png" alt="" style="width:76px;display:block;margin:0 auto 12px;opacity:0.9">
       <span style="text-transform:uppercase;letter-spacing:0.06em;font-size:13px;font-weight:700;color:var(--red)">{{ copy.eyebrow }}</span>
       <h2 style="font-size:36px;margin:12px 0 20px">{{ copy.title }}</h2>
-      <p style="font-size:18px;color:var(--ink);line-height:1.6;margin:0">{{ copy.intro1 }}</p>
+      <p style="font-size:18px;color:var(--ink);line-height:1.7;margin:0">{{ copy.intro1 }}</p>
     </div>
   </section>
 
-  <section style="padding:16px 24px 64px;background:var(--page)">
-    <div style="max-width:1200px;margin:0 auto">
-      <div style="max-width:70ch;margin:0 auto 40px;text-align:center">
-        <h3 style="font-size:28px;margin:0 0 8px">{{ copy.highlightsTitle }}</h3>
-        <p style="font-size:16px;color:var(--muted);line-height:1.6;margin:0">{{ copy.highlightsIntro }}</p>
+  <section style="padding:64px 24px;background:var(--sunken);border-top:1px solid var(--border);border-bottom:1px solid var(--border)">
+    <div style="max-width:1100px;margin:0 auto">
+      <h3 style="font-size:28px;text-align:center;margin:0 0 28px">{{ copy.missionTitle }}</h3>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:14px" class="fv-mission-grid">
+        <sc-for list="{{ missions }}" as="item" hint-placeholder-count="4">
+          <div style="background:#fff;border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:6px;padding:16px 20px;box-shadow:0 1px 2px rgba(0,0,0,0.06)">
+            <div style="font-size:15px;color:var(--ink);line-height:1.55">{{ item.body }}</div>
+          </div>
+        </sc-for>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px" class="fv-highlight-grid">
-        <sc-for list="{{ highlights }}" as="dancer" hint-placeholder-count="3">
-          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,0.06)">
-            <div style="height:340px">
-              <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ dancer.id }}" shape="rect" placeholder="Drop a performance photo" hint-size="100%,340px"></x-import>
-            </div>
-            <div style="padding:20px 24px 24px">
-              <h4 style="font-family:'Asap Condensed',sans-serif;font-size:22px;font-weight:700;color:var(--pine);margin:0 0 4px">{{ dancer.name }}</h4>
-              <div style="font-size:13px;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px">{{ dancer.role }}</div>
-              <div style="font-size:14px;color:var(--ink);line-height:1.5">{{ dancer.body }}</div>
-            </div>
+    </div>
+  </section>
+
+  <section style="padding:64px 24px;background:var(--page)">
+    <div style="max-width:1100px;margin:0 auto;display:grid;grid-template-columns:5fr 6fr;gap:48px;align-items:start" class="fv-whatwedo-grid">
+      <div>
+        <h3 style="font-size:28px;margin:0 0 16px">{{ copy.whatTitle }}</h3>
+        <p style="font-size:16px;color:var(--ink);line-height:1.7;margin:0">{{ copy.whatBody }}</p>
+      </div>
+      <div style="background:#fff;border:1px solid var(--border);border-radius:8px;padding:10px 28px;box-shadow:0 1px 2px rgba(0,0,0,0.06)">
+        <sc-for list="{{ events }}" as="item" hint-placeholder-count="4">
+          <div class="fv-event-row" style="display:flex;gap:14px;padding:18px 0;border-bottom:1px solid var(--border)">
+            <span style="width:8px;height:8px;background:var(--gold);border-radius:50%;margin-top:8px;flex:none"></span>
+            <span style="font-size:15px;color:var(--ink);line-height:1.6">{{ item.body }}</span>
           </div>
         </sc-for>
       </div>
@@ -64,8 +71,15 @@
   <dc-import name="SiteFooter" hint-size="100%,120px"></dc-import>
 
   <style>
+    .fv-event-row:last-child { border-bottom: none !important; }
+    @media (max-width: 960px) {
+      .fv-mission-grid { grid-template-columns: repeat(2, 1fr) !important; }
+    }
     @media (max-width: 860px) {
-      .fv-highlight-grid { grid-template-columns: 1fr !important; }
+      .fv-whatwedo-grid { grid-template-columns: 1fr !important; }
+    }
+    @media (max-width: 560px) {
+      .fv-mission-grid { grid-template-columns: 1fr !important; }
     }
   </style>
 </div>
@@ -75,36 +89,38 @@
 class Component extends DCLogic {
   renderVals() {
     const fallback = {
-      eyebrow: "Our Story",
-      title: "Two Decades of Dance in the Fox Valley",
-      intro1: "Founded in 2006, the Fox Valley Chinese Dance Group began as a small circle of neighbors who wanted to keep Chinese dance traditions alive for their families and share them with the wider community. Today we are a volunteer-led group of dancers of all ages, rehearsing weekly and performing throughout Northeast Wisconsin.",
-      highlightsTitle: "Dancer Highlights",
-      highlightsIntro: "A few of the dancers who bring our performances to life.",
-      highlights: [
+      eyebrow: "About Us",
+      title: "Fox Valley Chinese Dance Group",
+      intro1: "Founded at the beginning of 2006, the Fox Valley Chinese Dance Group (FVCDG) is a not for profit arts organization that strives to promote traditional Chinese performing arts while nurturing innovations for a broad audiences across the Northeast Wisconsin. FVCDG creates a focus for community pride and inspiration, bridges among local communities, and promotes knowledge, understanding, and appreciation of Chinese arts and culture.",
+      missionTitle: "Our Missions",
+      missions: [
         {
-          id: "dancer-1",
-          name: "Mei Chen",
-          role: "Group Dance Leader",
-          body: "Leads the group's classical and folk dance performances."
+          body: "To promote the rich cultural heritage of Chinese dance by providing a forum for training and by presenting works at professional standards to the public."
         },
         {
-          id: "dancer-2",
-          name: "",
-          role: "Solo Dancer",
-          body: "Performs solo pieces and assists in choreography."
+          body: "To present Chinese performing arts and culture in a newly emerging and changing American culture."
         },
         {
-          id: "dancer-3",
-          name: "Cindy Kong",
-          role: "Group Leader",
-          body: "Coordinates dance rehearsals and community performance bookings."
+          body: "To ensure the Chinese communities preserve their unique individual identity with their culture and tradition."
+        },
+        {
+          body: "To strengthen relationship between North Eastern Wisconsin Chinese Association (NEWCA) and Green Bay/Fox Cities/Oshkosh local communities."
         }
+      ],
+      whatTitle: "What We Do",
+      whatBody: "FVCDG strives to showcase traditional Chinese dance and music to audiences across the local communities. Our activities include performances, workshops, and lecture/demonstrations for any organizations and culture events. The followings are some examples what we have done and are going to present:",
+      events: [
+        { body: "Performed at NEWCA Chinese New Year Party on Jan. 28, 2006" },
+        { body: "To perform at UW-Oshkosh Asian Heritage Month in Oshkosh, April 3, 2006" },
+        { body: "To perform at Ethnic Festival in Washington Middle School in Green Bay, April 27, 2006" },
+        { body: "To perform at Wisconsin Chinese Culture Day in Madison, September 2006" }
       ]
     };
     const copy = window.ABOUT_COPY || fallback;
     return {
       copy,
-      highlights: copy.highlights || fallback.highlights,
+      missions: copy.missions || fallback.missions,
+      events: copy.events || fallback.events,
     };
   }
 }
