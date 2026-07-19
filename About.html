@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<script src="./about-copy.js?v=20260718a"></script>
+<script src="./about-copy.js?v=20260718c"></script>
 <script src="./support.js"></script>
 </head>
 <body>
@@ -29,36 +29,34 @@
 <div style="background:var(--page)" data-screen-label="About">
   <dc-import name="SiteNav" active-page="about" hint-size="100%,72px"></dc-import>
 
-  <section style="padding:64px 24px;background:var(--page)">
-    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px;align-items:start" class="fv-about-grid">
-      <div style="border-radius:8px;overflow:hidden;box-shadow:0 4px 12px rgba(0,0,0,0.1);height:420px">
-        <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="about-photo" shape="rect" placeholder="Drop a group/rehearsal photo" hint-size="100%,420px"></x-import>
+  <section style="padding:64px 24px 48px;background:var(--page)">
+    <div style="max-width:70ch;margin:0 auto;text-align:center">
+      <img src="assets/pptx/image13.png" alt="" style="width:76px;display:block;margin:0 auto 12px;opacity:0.9">
+      <span style="text-transform:uppercase;letter-spacing:0.06em;font-size:13px;font-weight:700;color:var(--red)">{{ copy.eyebrow }}</span>
+      <h2 style="font-size:36px;margin:12px 0 20px">{{ copy.title }}</h2>
+      <p style="font-size:18px;color:var(--ink);line-height:1.6;margin:0">{{ copy.intro1 }}</p>
+    </div>
+  </section>
+
+  <section style="padding:16px 24px 64px;background:var(--page)">
+    <div style="max-width:1200px;margin:0 auto">
+      <div style="max-width:70ch;margin:0 auto 40px;text-align:center">
+        <h3 style="font-size:28px;margin:0 0 8px">{{ copy.highlightsTitle }}</h3>
+        <p style="font-size:16px;color:var(--muted);line-height:1.6;margin:0">{{ copy.highlightsIntro }}</p>
       </div>
-      <div>
-        <img src="assets/pptx/image13.png" alt="" style="width:64px;display:block;margin:0 0 12px;opacity:0.9">
-        <span style="text-transform:uppercase;letter-spacing:0.06em;font-size:13px;font-weight:700;color:var(--red)">{{ copy.eyebrow }}</span>
-        <h2 style="font-size:36px;margin:12px 0 20px">{{ copy.title }}</h2>
-        <p style="font-size:18px;color:var(--ink);line-height:1.6;margin:0 0 20px">{{ copy.intro1 }}</p>
-        <p style="font-size:18px;color:var(--ink);line-height:1.6;margin:0 0 24px">{{ copy.intro2 }}</p>
-        <div style="display:flex;gap:12px;flex-wrap:wrap;margin-bottom:32px">
-          <span style="display:inline-flex;align-items:center;padding:4px 12px;border-radius:999px;background:var(--gold-soft);color:#8A6206;font-size:12px;font-weight:700;letter-spacing:0.02em;text-transform:uppercase">{{ copy.badges[0] }}</span>
-          <span style="display:inline-flex;align-items:center;padding:4px 12px;border-radius:999px;background:var(--pine-soft);color:var(--pine);font-size:12px;font-weight:700;letter-spacing:0.02em;text-transform:uppercase">{{ copy.badges[1] }}</span>
-          <span style="display:inline-flex;align-items:center;padding:4px 12px;border-radius:999px;background:#F0EEE7;color:var(--muted);font-size:12px;font-weight:700;letter-spacing:0.02em;text-transform:uppercase">{{ copy.badges[2] }}</span>
-        </div>
-        <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px" class="fv-mission-grid">
-          <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:20px;box-shadow:0 1px 2px rgba(0,0,0,0.06)">
-            <h4 style="font-family:'Asap',sans-serif;font-size:16px;font-weight:700;color:var(--pine);margin:0 0 8px">{{ copy.highlights[0].title }}</h4>
-            <div style="font-size:14px;color:var(--ink);line-height:1.5">{{ copy.highlights[0].body }}</div>
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px" class="fv-highlight-grid">
+        <sc-for list="{{ highlights }}" as="dancer" hint-placeholder-count="3">
+          <div style="background:#fff;border:1px solid var(--border);border-radius:8px;overflow:hidden;box-shadow:0 1px 2px rgba(0,0,0,0.06)">
+            <div style="height:340px">
+              <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ dancer.id }}" shape="rect" placeholder="Drop a performance photo" hint-size="100%,340px"></x-import>
+            </div>
+            <div style="padding:20px 24px 24px">
+              <h4 style="font-family:'Asap Condensed',sans-serif;font-size:22px;font-weight:700;color:var(--pine);margin:0 0 4px">{{ dancer.name }}</h4>
+              <div style="font-size:13px;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px">{{ dancer.role }}</div>
+              <div style="font-size:14px;color:var(--ink);line-height:1.5">{{ dancer.body }}</div>
+            </div>
           </div>
-          <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:20px;box-shadow:0 1px 2px rgba(0,0,0,0.06)">
-            <h4 style="font-family:'Asap',sans-serif;font-size:16px;font-weight:700;color:var(--pine);margin:0 0 8px">{{ copy.highlights[1].title }}</h4>
-            <div style="font-size:14px;color:var(--ink);line-height:1.5">{{ copy.highlights[1].body }}</div>
-          </div>
-          <div style="background:#fff;border:1px solid var(--border);border-radius:6px;padding:20px;box-shadow:0 1px 2px rgba(0,0,0,0.06)">
-            <h4 style="font-family:'Asap',sans-serif;font-size:16px;font-weight:700;color:var(--pine);margin:0 0 8px">{{ copy.highlights[2].title }}</h4>
-            <div style="font-size:14px;color:var(--ink);line-height:1.5">{{ copy.highlights[2].body }}</div>
-          </div>
-        </div>
+        </sc-for>
       </div>
     </div>
   </section>
@@ -67,8 +65,7 @@
 
   <style>
     @media (max-width: 860px) {
-      .fv-about-grid { grid-template-columns: 1fr !important; }
-      .fv-mission-grid, .fv-team-grid { grid-template-columns: 1fr !important; }
+      .fv-highlight-grid { grid-template-columns: 1fr !important; }
     }
   </style>
 </div>
@@ -80,25 +77,35 @@ class Component extends DCLogic {
     const fallback = {
       eyebrow: "Our Story",
       title: "Two Decades of Dance in the Fox Valley",
-      intro1: "Founded in 2006, the Fox Valley Chinese Dance Group began as a small circle of neighbors who wanted to keep Chinese dance traditions alive for their families and share them with the wider community. Today we are a volunteer-led troupe of dancers of all ages, rehearsing weekly and performing throughout Northeast Wisconsin.",
-      intro2: "Our members range from grade-schoolers to grandparents, united by a shared love of movement, music, and culture. We welcome dancers and volunteers of any background. No Chinese heritage required, just curiosity and commitment. Our mission is twofold: to serve Fox Valley's Chinese-American families by keeping their cultural heritage alive, and to introduce that heritage to the wider Wisconsin community through performance.",
-      badges: ["Founded 2006", "All Ages Welcome", "Volunteer-Led"],
+      intro1: "Founded in 2006, the Fox Valley Chinese Dance Group began as a small circle of neighbors who wanted to keep Chinese dance traditions alive for their families and share them with the wider community. Today we are a volunteer-led group of dancers of all ages, rehearsing weekly and performing throughout Northeast Wisconsin.",
+      highlightsTitle: "Dancer Highlights",
+      highlightsIntro: "A few of the dancers who bring our performances to life.",
       highlights: [
         {
-          title: "Mission",
-          body: "Promote and preserve Chinese dance and culture through performance, education and community connection."
+          id: "dancer-1",
+          name: "Mei Chen",
+          role: "Group Dance Leader",
+          body: "Leads the group's classical and folk dance performances."
         },
         {
-          title: "Members",
-          body: "A close-knit, multi-generational troupe of dancers, musicians and volunteer families."
+          id: "dancer-2",
+          name: "",
+          role: "Solo Dancer",
+          body: "Performs solo pieces and assists in choreography."
         },
         {
-          title: "Community",
-          body: "Regular performances at local theatres, festivals and civic events across the Fox Valley."
+          id: "dancer-3",
+          name: "Cindy Kong",
+          role: "Group Leader",
+          body: "Coordinates dance rehearsals and community performance bookings."
         }
       ]
     };
-    return { copy: window.ABOUT_COPY || fallback };
+    const copy = window.ABOUT_COPY || fallback;
+    return {
+      copy,
+      highlights: copy.highlights || fallback.highlights,
+    };
   }
 }
 

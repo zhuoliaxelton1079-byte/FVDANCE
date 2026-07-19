@@ -6,20 +6,20 @@ window.TEAM_COPY = {
     {
       id: "team-1",
       name: "Mei Chen",
-      role: "Founder and Head Instructor",
-      bio: "Founded the group in 2006 and has led its classical and folk repertoire ever since."
+      role: "Group Dance Leader",
+      bio: "Leads the group's classical and folk dance performances."
     },
     {
       id: "team-2",
-      name: "Julia Tang",
-      role: "Youth Program Lead",
-      bio: "Teaches our children's classes and choreographs our annual showcase pieces."
+      name: "",
+      role: "Solo Dancer",
+      bio: "Performs solo pieces and assists in choreography."
     },
     {
       id: "team-3",
-      name: "Wen Zhao",
-      role: "Ensemble Director",
-      bio: "Coordinates adult ensemble rehearsals and community performance bookings."
+      name: "Cindy Kong",
+      role: "Group Leader",
+      bio: "Coordinates dance rehearsals and community performance bookings."
     }
   ]
 };
