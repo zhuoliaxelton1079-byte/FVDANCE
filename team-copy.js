@@ -2,24 +2,27 @@ window.TEAM_COPY = {
   eyebrow: "Meet the Group",
   title: "Instructors and Dancers",
   intro: "Our teaching team blends formal Chinese dance training with years of teaching kids and adults alike in the Fox Valley.",
-  teamMembers: [
+  featured: [
     {
       id: "team-1",
-      name: "Mei Chen",
-      role: "Group Dance Leader",
-      bio: "Leads the group's classical and folk dance performances."
+      name: "Duo Cao",
+      role: "Instructor and Group Dance Leader",
+      bio: "Leads the group's classical and folk dance performances.",
+      src: "duo-web.jpg"
     },
     {
       id: "team-2",
-      name: "",
+      name: "Lu Zhang",
       role: "Solo Dancer",
-      bio: "Performs solo pieces and assists in choreography."
-    },
-    {
-      id: "team-3",
-      name: "Cindy Kong",
-      role: "Group Leader",
-      bio: "Coordinates dance rehearsals and community performance bookings."
+      bio: "Performs solo pieces and assists in choreography.",
+      src: ""
     }
+  ],
+  dancersHeading: "Our Dancers",
+  dancers: [
+    { id: "dancer-1", name: "Dancer Name", role: "Dancer" },
+    { id: "dancer-2", name: "Dancer Name", role: "Dancer" },
+    { id: "dancer-3", name: "Dancer Name", role: "Dancer" },
+    { id: "dancer-4", name: "Dancer Name", role: "Dancer" }
   ]
 };

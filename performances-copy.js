@@ -12,7 +12,7 @@ window.PERFORMANCES_COPY = {
     { id: "gallery-6", caption: "Youth ensemble rehearsal", placeholder: "Drop a performance photo" }
   ],
   videoClips: [
-    { id: "video-1", caption: "Classical Ribbon Dance - Fox Valley PAC", placeholder: "Drop a video thumbnail" },
-    { id: "video-2", caption: "Ethnic Folk Showcase - Oshkosh Grand Opera House", placeholder: "Drop a video thumbnail" }
+    { id: "video-1", caption: "Group Dance Performances", placeholder: "Drop a video thumbnail", video: "dance-clip-web.mp4", hasVideo: true, noVideo: false },
+    { id: "video-2", caption: "Ethnic Folk Showcase - Oshkosh Grand Opera House", placeholder: "Drop a video thumbnail", video: "", hasVideo: false, noVideo: true }
   ]
 };

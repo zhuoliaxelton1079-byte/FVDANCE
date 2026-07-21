@@ -23,6 +23,9 @@
     }
     a { color: var(--pine); }
     a:hover { color: var(--pine-dark); }
+    .fv-method { text-decoration:none; display:flex; gap:16px; align-items:center; padding:18px 20px;
+      background:#fff; border:1px solid var(--border); border-radius:10px; transition:box-shadow .15s, transform .15s, border-color .15s; }
+    .fv-method:hover { box-shadow:0 6px 18px rgba(0,0,0,0.08); transform:translateY(-2px); border-color:var(--pine); }
   </style>
 </helmet>
 
@@ -30,65 +33,43 @@
   <dc-import name="SiteNav" active-page="contact" hint-size="100%,72px"></dc-import>
 
   <section style="padding:64px 24px;background:var(--page)">
-    <div style="max-width:1200px;margin:0 auto;display:grid;grid-template-columns:0.9fr 1.1fr;gap:64px" class="fv-contact-grid">
-      <div>
-        <img src="assets/pptx/image13.png" alt="" style="width:64px;display:block;margin:0 0 12px;opacity:0.9">
-        <span style="text-transform:uppercase;letter-spacing:0.06em;font-size:13px;font-weight:700;color:var(--red)">{{ copy.eyebrow }}</span>
-        <h2 style="font-size:36px;margin:12px 0 20px">{{ copy.title }}</h2>
-        <p style="font-size:18px;color:var(--ink);line-height:1.6;margin:0 0 32px">{{ copy.intro }}</p>
-        <div style="display:flex;flex-direction:column;gap:16px">
-          <div style="display:flex;gap:12px;align-items:center">
-            <span style="width:36px;height:36px;border-radius:50%;background:var(--pine-soft);color:var(--pine);display:flex;align-items:center;justify-content:center;font-size:16px">✉</span>
-            <a href="mailto:{{ copy.email }}" style="color:var(--ink);text-decoration:none;font-size:16px">{{ copy.email }}</a>
-          </div>
-          <div style="display:flex;gap:12px;align-items:center">
-            <span style="width:36px;height:36px;border-radius:50%;background:var(--pine-soft);color:var(--pine);display:flex;align-items:center;justify-content:center;font-size:16px">☎</span>
-            <a href="{{ copy.phoneHref }}" style="color:var(--ink);text-decoration:none;font-size:16px">{{ copy.phoneDisplay }}</a>
-          </div>
-          <div style="display:flex;gap:12px;align-items:center">
-            <span style="width:36px;height:36px;border-radius:50%;background:var(--pine-soft);color:var(--pine);display:flex;align-items:center;justify-content:center;font-size:16px">📍</span>
-            <span style="color:var(--ink);font-size:16px">{{ copy.location }}</span>
-          </div>
+    <div style="max-width:960px;margin:0 auto;text-align:center">
+      <img src="assets/pptx/image13.png" alt="" style="width:72px;display:block;margin:0 auto 12px;opacity:0.9">
+      <span style="text-transform:uppercase;letter-spacing:0.06em;font-size:13px;font-weight:700;color:var(--red)">{{ copy.eyebrow }}</span>
+      <h2 style="font-size:36px;margin:12px 0 16px">{{ copy.title }}</h2>
+      <p style="max-width:64ch;margin:0 auto;font-size:18px;color:var(--ink);line-height:1.6">{{ copy.intro }}</p>
+    </div>
+
+    <div style="max-width:960px;margin:48px auto 0;display:grid;grid-template-columns:0.85fr 1.15fr;gap:48px;align-items:start" class="fv-contact-grid">
+
+      <!-- Contact person card -->
+      <div style="background:var(--sunken);border:1px solid var(--border);border-radius:12px;padding:32px 24px;text-align:center">
+        <div style="width:150px;height:150px;border-radius:50%;overflow:hidden;margin:0 auto 20px;box-shadow:0 1px 3px rgba(0,0,0,0.1)">
+          <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="contact-person" shape="circle" placeholder="Photo" hint-size="150px,150px"></x-import>
+        </div>
+        <h3 style="font-size:24px;color:var(--pine);margin:0 0 4px">{{ copy.contact.name }}</h3>
+        <div style="font-size:13px;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:12px">{{ copy.contact.role }}</div>
+        <p style="font-size:15px;color:var(--muted);line-height:1.55;margin:0">{{ copy.contact.blurb }}</p>
+      </div>
+
+      <!-- Contact methods -->
+      <div style="display:flex;flex-direction:column;gap:16px">
+        <a href="mailto:{{ copy.email }}" class="fv-method">
+          <span style="flex:none;width:44px;height:44px;border-radius:50%;background:var(--pine-soft);color:var(--pine);display:flex;align-items:center;justify-content:center;font-size:20px">✉</span>
+          <span style="text-align:left">
+            <span style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted)">{{ copy.emailLabel }}</span>
+            <span style="display:block;font-size:17px;color:var(--ink)">{{ copy.email }}</span>
+          </span>
+        </a>
+        <div class="fv-method" style="cursor:default">
+          <span style="flex:none;width:44px;height:44px;border-radius:50%;background:var(--pine-soft);color:var(--pine);display:flex;align-items:center;justify-content:center;font-size:20px">📍</span>
+          <span style="text-align:left">
+            <span style="display:block;font-size:12px;font-weight:700;text-transform:uppercase;letter-spacing:0.05em;color:var(--muted)">{{ copy.locationLabel }}</span>
+            <span style="display:block;font-size:17px;color:var(--ink)">{{ copy.location }}</span>
+          </span>
         </div>
       </div>
 
-      <div style="background:var(--sunken);border:1px solid var(--border);border-radius:8px;padding:32px">
-        <sc-if value="{{ formSubmitted }}" hint-placeholder-val="{{ false }}">
-          <div style="display:flex;flex-direction:column;align-items:flex-start;gap:12px;padding:32px 0">
-            <span style="width:48px;height:48px;border-radius:50%;background:var(--pine);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px">✓</span>
-            <h3 style="font-size:28px;margin:0">{{ copy.successTitle }}</h3>
-            <p style="color:var(--ink);font-size:16px;margin:0">{{ copy.successBody }}</p>
-            <div>
-              <span onClick="{{ resetForm }}" style="cursor:pointer;color:var(--pine);font-size:15px;text-decoration:underline">{{ copy.sendAnother }}</span>
-            </div>
-          </div>
-        </sc-if>
-        <sc-if value="{{ formNotSubmitted }}" hint-placeholder-val="{{ true }}">
-          <form onSubmit="{{ handleSubmit }}" style="display:flex;flex-direction:column;gap:16px">
-            <div>
-              <label style="display:block;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px">{{ copy.form.nameLabel }}</label>
-              <input type="text" required="{{ true }}" style="width:100%;padding:10px 12px;border:1px solid #C7CBC8;border-radius:5px;font-family:'Asap',sans-serif;font-size:16px" placeholder="{{ copy.form.namePlaceholder }}"></input>
-            </div>
-            <div>
-              <label style="display:block;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px">{{ copy.form.emailLabel }}</label>
-              <input type="email" required="{{ true }}" style="width:100%;padding:10px 12px;border:1px solid #C7CBC8;border-radius:5px;font-family:'Asap',sans-serif;font-size:16px" placeholder="{{ copy.form.emailPlaceholder }}"></input>
-            </div>
-            <div>
-              <label style="display:block;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px">{{ copy.form.inquiryLabel }}</label>
-              <select style="width:100%;padding:10px 12px;border:1px solid #C7CBC8;border-radius:5px;font-family:'Asap',sans-serif;font-size:16px;background:#fff">
-                <sc-for list="{{ copy.form.inquiryOptions }}" as="opt" hint-placeholder-count="3">
-                  <option value="{{ opt.value }}">{{ opt.label }}</option>
-                </sc-for>
-              </select>
-            </div>
-            <div>
-              <label style="display:block;font-size:14px;font-weight:700;color:var(--ink);margin-bottom:4px">{{ copy.form.messageLabel }}</label>
-              <textarea rows="4" required="{{ true }}" style="width:100%;padding:10px 12px;border:1px solid #C7CBC8;border-radius:5px;font-family:'Asap',sans-serif;font-size:16px;resize:vertical" placeholder="{{ copy.form.messagePlaceholder }}"></textarea>
-            </div>
-            <button type="submit" style="align-self:flex-start;padding:13px 24px;border-radius:5px;background:var(--pine);color:#fff;font-weight:700;font-size:16px;border:none;cursor:pointer">{{ copy.form.submitLabel }}</button>
-          </form>
-        </sc-if>
-      </div>
     </div>
   </section>
 
@@ -104,43 +85,23 @@
 </x-dc>
 <script type="text/x-dc" data-dc-script>
 class Component extends DCLogic {
-  state = { formSubmitted: false };
-  handleSubmit = (e) => { e.preventDefault(); this.setState({ formSubmitted: true }); };
-  resetForm = () => this.setState({ formSubmitted: false });
   renderVals() {
     const fallback = {
       eyebrow: "Get In Touch",
       title: "Book Us for Your Event",
       intro: "We love performing at community festivals, school programs, cultural celebrations and private events across Fox Valley and beyond. We also welcome sponsorship inquiries from local businesses who want to support Chinese cultural arts in our community.",
-      email: "hello@foxvalleychinesedance.org",
-      phoneDisplay: "(920) 555-1234",
-      phoneHref: "tel:19205551234",
-      location: "Fox Valley, Wisconsin",
-      successTitle: "Thank you!",
-      successBody: "We have received your message and will be in touch soon.",
-      sendAnother: "Send another message",
-      form: {
-        nameLabel: "Name",
-        namePlaceholder: "Your name",
-        emailLabel: "Email",
-        emailPlaceholder: "you@example.com",
-        inquiryLabel: "Inquiry Type",
-        inquiryOptions: [
-          { value: "booking", label: "Event Booking" },
-          { value: "sponsorship", label: "Sponsorship Inquiry" },
-          { value: "other", label: "Other" }
-        ],
-        messageLabel: "Message",
-        messagePlaceholder: "Tell us about your event or sponsorship idea",
-        submitLabel: "Send Message"
-      }
+      contact: {
+        name: "Mei Chen",
+        role: "Bookings & Sponsorship",
+        blurb: "Reach out any time — Mei handles event bookings and sponsorship questions and will get back to you within a couple of days."
+      },
+      emailLabel: "Email us",
+      email: "fvchinesedance@gmail.com",
+      locationLabel: "Find us",
+      location: "Fox Valley, Wisconsin"
     };
     return {
       copy: window.CONTACT_COPY || fallback,
-      formSubmitted: this.state.formSubmitted,
-      formNotSubmitted: !this.state.formSubmitted,
-      handleSubmit: this.handleSubmit,
-      resetForm: this.resetForm,
     };
   }
 }

@@ -37,15 +37,32 @@
         <h2 style="font-size:36px;margin:12px 0 16px">{{ copy.title }}</h2>
         <p style="font-size:18px;color:var(--ink);line-height:1.6;margin:0">{{ copy.intro }}</p>
       </div>
-      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px" class="fv-team-grid">
-        <sc-for list="{{ teamMembers }}" as="member" hint-placeholder-count="3">
+      <!-- Featured: group dance leader + solo dancer -->
+      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:40px;max-width:720px;margin:0 auto" class="fv-featured-grid">
+        <sc-for list="{{ featured }}" as="member" hint-placeholder-count="2">
+          <div style="text-align:center;background:var(--sunken);border:1px solid var(--border);border-radius:14px;padding:32px 24px">
+            <div style="width:240px;height:320px;border-radius:12px;overflow:hidden;margin:0 auto 20px;box-shadow:0 2px 6px rgba(0,0,0,0.1)">
+              <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ member.id }}" shape="rounded" radius="12" fit="contain" src="{{ member.src }}" placeholder="Photo" hint-size="240px,320px"></x-import>
+            </div>
+            <h3 style="font-family:'Asap Condensed',sans-serif;font-size:26px;font-weight:700;color:var(--pine);margin:0 0 4px">{{ member.name }}</h3>
+            <div style="font-size:13px;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:10px">{{ member.role }}</div>
+            <div style="font-size:15px;color:var(--muted);line-height:1.55">{{ member.bio }}</div>
+          </div>
+        </sc-for>
+      </div>
+
+      <!-- Other dancers -->
+      <div style="text-align:center;margin:56px 0 28px">
+        <h3 style="font-size:26px;color:var(--pine)">{{ dancersHeading }}</h3>
+      </div>
+      <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px" class="fv-team-grid">
+        <sc-for list="{{ dancers }}" as="member" hint-placeholder-count="4">
           <div style="text-align:center">
-            <div style="width:140px;height:140px;border-radius:50%;overflow:hidden;margin:0 auto 16px;box-shadow:0 1px 2px rgba(0,0,0,0.08)">
-              <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ member.id }}" shape="circle" placeholder="Photo" hint-size="140px,140px"></x-import>
+            <div style="width:160px;height:160px;border-radius:12px;overflow:hidden;margin:0 auto 16px;box-shadow:0 1px 2px rgba(0,0,0,0.08)">
+              <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ member.id }}" shape="rounded" radius="12" placeholder="Photo" hint-size="160px,160px"></x-import>
             </div>
             <h4 style="font-family:'Asap Condensed',sans-serif;font-size:20px;font-weight:700;color:var(--pine);margin:0 0 4px">{{ member.name }}</h4>
-            <div style="font-size:13px;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:0.04em;margin-bottom:8px">{{ member.role }}</div>
-            <div style="font-size:14px;color:var(--muted);line-height:1.5">{{ member.bio }}</div>
+            <div style="font-size:13px;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:0.04em">{{ member.role }}</div>
           </div>
         </sc-for>
       </div>
@@ -56,6 +73,10 @@
 
   <style>
     @media (max-width: 860px) {
+      .fv-featured-grid { grid-template-columns: 1fr !important; }
+      .fv-team-grid { grid-template-columns: repeat(2,1fr) !important; }
+    }
+    @media (max-width: 520px) {
       .fv-team-grid { grid-template-columns: 1fr !important; }
     }
   </style>
@@ -69,31 +90,36 @@ class Component extends DCLogic {
       eyebrow: "Meet the Group",
       title: "Instructors and Dancers",
       intro: "Our teaching team blends formal Chinese dance training with years of teaching kids and adults alike in the Fox Valley.",
-      teamMembers: [
+      featured: [
         {
           id: "team-1",
-          name: "Mei Chen",
-          role: "Founder and Head Instructor",
-          bio: "Founded the group in 2006 and has led its classical and folk repertoire ever since."
+          name: "Duo Cao",
+          role: "Instructor and Group Dance Leader",
+          bio: "Leads the group's classical and folk dance performances.",
+          src: "duo-web.jpg"
         },
         {
           id: "team-2",
-          name: "Julia Tang",
-          role: "Youth Program Lead",
-          bio: "Teaches our children's classes and choreographs our annual showcase pieces."
-        },
-        {
-          id: "team-3",
-          name: "Wen Zhao",
-          role: "Ensemble Director",
-          bio: "Coordinates adult ensemble rehearsals and community performance bookings."
+          name: "Lu Zhang",
+          role: "Solo Dancer",
+          bio: "Performs solo pieces and assists in choreography.",
+          src: ""
         }
+      ],
+      dancersHeading: "Our Dancers",
+      dancers: [
+        { id: "dancer-1", name: "Dancer Name", role: "Dancer" },
+        { id: "dancer-2", name: "Dancer Name", role: "Dancer" },
+        { id: "dancer-3", name: "Dancer Name", role: "Dancer" },
+        { id: "dancer-4", name: "Dancer Name", role: "Dancer" }
       ]
     };
     const copy = window.TEAM_COPY || fallback;
     return {
       copy,
-      teamMembers: copy.teamMembers,
+      featured: copy.featured,
+      dancersHeading: copy.dancersHeading,
+      dancers: copy.dancers,
     };
   }
 }
