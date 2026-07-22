@@ -38,8 +38,8 @@
         <p style="font-size:18px;color:var(--ink);line-height:1.6;margin:0">{{ copy.intro }}</p>
       </div>
       <!-- Featured: group dance leader + solo dancer -->
-      <div style="display:grid;grid-template-columns:repeat(2,1fr);gap:40px;max-width:720px;margin:0 auto" class="fv-featured-grid">
-        <sc-for list="{{ featured }}" as="member" hint-placeholder-count="2">
+      <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:40px;max-width:1080px;margin:0 auto" class="fv-featured-grid">
+        <sc-for list="{{ featured }}" as="member" hint-placeholder-count="3">
           <div style="text-align:center;background:var(--sunken);border:1px solid var(--border);border-radius:14px;padding:32px 24px">
             <div style="width:240px;height:320px;border-radius:12px;overflow:hidden;margin:0 auto 20px;box-shadow:0 2px 6px rgba(0,0,0,0.1)">
               <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ member.id }}" shape="rounded" radius="12" fit="contain" src="{{ member.src }}" placeholder="Photo" hint-size="240px,320px"></x-import>
@@ -58,8 +58,8 @@
       <div style="display:grid;grid-template-columns:repeat(4,1fr);gap:24px" class="fv-team-grid">
         <sc-for list="{{ dancers }}" as="member" hint-placeholder-count="4">
           <div style="text-align:center">
-            <div style="width:160px;height:160px;border-radius:12px;overflow:hidden;margin:0 auto 16px;box-shadow:0 1px 2px rgba(0,0,0,0.08)">
-              <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ member.id }}" shape="rounded" radius="12" placeholder="Photo" hint-size="160px,160px"></x-import>
+            <div style="width:180px;height:220px;border-radius:12px;overflow:hidden;margin:0 auto 16px;box-shadow:0 1px 2px rgba(0,0,0,0.08)">
+              <x-import component-from-global-scope="image-slot" from="./image-slot.js" id="{{ member.id }}" shape="rounded" radius="12" fit="cover" src="{{ member.src }}" placeholder="Photo" hint-size="180px,220px"></x-import>
             </div>
             <h4 style="font-family:'Asap Condensed',sans-serif;font-size:20px;font-weight:700;color:var(--pine);margin:0 0 4px">{{ member.name }}</h4>
             <div style="font-size:13px;font-weight:600;color:var(--red);text-transform:uppercase;letter-spacing:0.04em">{{ member.role }}</div>
@@ -89,12 +89,19 @@ class Component extends DCLogic {
     const fallback = {
       eyebrow: "Meet the Group",
       title: "Instructors and Dancers",
-      intro: "Our teaching team blends formal Chinese dance training with years of teaching kids and adults alike in the Fox Valley.",
+      intro: "Our dance team brings together dancers with formal Chinese dance training and passionate dance lovers, combining technical excellence with enthusiasm to celebrate and share the beauty of Chinese dance.",
       featured: [
+        {
+          id: "team-0",
+          name: "Cindy Kong",
+          role: "Team Leader",
+          bio: "Leads the group and coordinates rehearsal and performance schedules.",
+          src: "cindy.png"
+        },
         {
           id: "team-1",
           name: "Duo Cao",
-          role: "Instructor and Group Dance Leader",
+          role: "Group Dance Instructor",
           bio: "Leads the group's classical and folk dance performances.",
           src: "duo-web.jpg"
         },
@@ -103,13 +110,13 @@ class Component extends DCLogic {
           name: "Lu Zhang",
           role: "Solo Dancer",
           bio: "Performs solo pieces and assists in choreography.",
-          src: ""
+          src: "lu.png"
         }
       ],
       dancersHeading: "Our Dancers",
       dancers: [
-        { id: "dancer-1", name: "Dancer Name", role: "Dancer" },
-        { id: "dancer-2", name: "Dancer Name", role: "Dancer" },
+        { id: "dancer-1", name: "Dancer Name", role: "Dancer", src: "qiuhong.jpg" },
+        { id: "dancer-2", name: "Dancer Name", role: "Dancer", src: "zhuoli.jpg" },
         { id: "dancer-3", name: "Dancer Name", role: "Dancer" },
         { id: "dancer-4", name: "Dancer Name", role: "Dancer" }
       ]
