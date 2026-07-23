@@ -8,7 +8,5 @@ window.CONTACT_COPY = {
     blurb: "Reach out any time — Cindy handles event bookings and sponsorship questions and will get back to you within a couple of days."
   },
   emailLabel: "Email us",
-  email: "fvchinesedance@gmail.com",
-  locationLabel: "Find us",
-  location: "Fox Valley, Wisconsin"
+  email: "fvchinesedance@gmail.com"
 };
