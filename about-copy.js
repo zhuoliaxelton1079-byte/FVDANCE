@@ -4,7 +4,7 @@
 // Edit the words between the quotes, save, then reload the page.
 //   • Keep the quotes. Need a quote mark inside your text? Type \"
 //   • Don't change the words to the LEFT of the colons.
-//   • To add a mission, event, or dance type, copy an existing
+//   • To add a mission or an activity, copy an existing
 //     { ... }, block and edit the words inside it.
 // ─────────────────────────────────────────────────────────────
 
@@ -30,11 +30,22 @@ window.ABOUT_COPY = {
   ],
 
   whatTitle: "What We Do",
-  whatBody: "FVCDG strives to showcase traditional Chinese dance and music to audiences across the local communities. Our activities include performances, workshops, and lecture/demonstrations for any organizations and culture events. The followings are some examples what we have done and are going to present:",
-  events: [
-    { body: "Performed at NEWCA Chinese New Year Party on Jan. 28, 2006" },
-    { body: "To perform at UW-Oshkosh Asian Heritage Month in Oshkosh, April 3, 2006" },
-    { body: "To perform at Ethnic Festival in Washington Middle School in Green Bay, April 27, 2006" },
-    { body: "To perform at Wisconsin Chinese Culture Day in Madison, September 2006" }
+  whatBody: "FVCDG brings traditional Chinese dance and music to audiences throughout the Fox Valley and Northeast Wisconsin. We are glad to take part in community festivals, cultural celebrations, school programs, and private events — whether that means a single dance on a shared program or a full-length showcase.",
+  offerings: [
+    {
+      mark: "舞",
+      title: "Performances",
+      body: "Classical, folk, and ethnic Chinese dance staged for festivals, concerts, holiday celebrations, and community gatherings of any size."
+    },
+    {
+      mark: "講",
+      title: "Lecture & Demonstrations",
+      body: "Presentations for schools, libraries, and civic groups that introduce the history, regions, and meaning behind the dances we perform."
+    },
+    {
+      mark: "學",
+      title: "Workshops",
+      body: "Hands-on sessions where participants of any age or experience level try the movement, rhythm, and storytelling of Chinese dance."
+    }
   ]
 };
